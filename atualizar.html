@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="logomarca2">
+        <img src="logomarca.jpg" alt="">
+        <h1>Lançar atualizaçoes de rastreios</h1>
+    </div>
+    <div id="atualiza">
+        Código de Rastreio: <input id="cod_rastreio"> <br><br>
+        Tipos de Movimentaçao  <select id="cod_tipos"><br><br>
+            <option value="">Selecione</option>
+            <option value="Postado">Postado</option>
+            <option value="Saiu para entrega">Saiu para entrega</option>
+            <option value="Em trânsito">Em trânsito</option>
+            <option value="Entreque">Entreque</option>
+        </select>
+        origem  <select id="cod_origem"><br><br>
+            <option value="">Selecione</option>
+            <option value="Recife/PE">Recife/PE</option>
+            <option value="Salvador/BA">Salvador/BA</option>
+            <option value="Olinda/PE">Olinda/PE</option>
+        </select>
+        Destino  <select id="cod_destino"><br><br>
+            <option value="">Selecione</option>
+            <option value="Recife/PE">Recife/PE</option>
+            <option value="Salvador/BA">Salvador/BA</option>
+            <option value="Olinda/PE">Olinda/PE</option>
+        </select>
+        Data de Movimentaçao <input type="datetime-local" id="cod_data"><br><br>
+        <button id="btnCadastrar">Cadastrar</button>
+    </div>
+    <script>
+        $("#btnCadastrar").click(function(){
+            var getRastreio = $("#cod_rastreio").val();
+            var getTipos = $("#cod_tipos").val();
+            var getOrigem = $("#cod_origem").val();
+            var getDestino = $("#cod_destino").val();
+            var getData = $("#cod_data").val();
+            $.ajax({
+                url: "inserir.php",
+                type: "POST",
+                data: {
+                    rastreio: getRastreio,
+                    tipos: getTipos,
+                    origem: getOrigem,
+                    destino:getDestino,
+                    data:getData
+                }
+            })   
+        });
+    </script>
+</body>
+</html>
